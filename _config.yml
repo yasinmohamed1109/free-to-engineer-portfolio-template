@@ -1,28 +1,26 @@
-# ---------- Site Settings ----------
 title: "Yasin Mohamed's Portfolio"
 
-# Site address (important for project sites)
+# SITE ADDRESS
 url: "https://yasinmohamed1109.github.io"
-baseurl: "/free-to-engineer-portfolio-template"   # keep this until you move to a root site
+baseurl: ""                # root site
+# If you keep a project site instead, use:
+# baseurl: "/free-to-engineer-portfolio-template"
 
-# ---------- Hero Section ----------
+# HERO
 name: "Yasin Mohamed"
 headline: "Mechanical & Aerospace Student | CPP Formula SAE"
 description: >-
-  I design, simulate, and build performance parts—Formula SAE aero, 
+  I design, simulate, and build performance parts—Formula SAE aero,
   lightweight mechanisms, and prototypes. Skilled in CAD, CFD, and testing.
 
-# Profile image
-# Make sure avatar.jpeg exists in assets/images/profile-image/
-profile_image: "{{ '/assets/images/profile-image/avatar.jpeg' | relative_url }}"
+# ASSETS
+profile_image: "{{ '/assets/images/profile-image/avatar.jpg' | relative_url }}"
+resume-url: "{{ '/assets/pdf/resume.pdf' | relative_url }}" # or a Google Drive link
 
-# Resume (Google Drive or PDF in /assets/resume/)
-resume-url: "https://drive.google.com/file/d/1FXpZuDO_mPiLyzN7kHOXvihp7nKKdCP-/view"
-
-# ---------- External Links ----------
+# EXTERNAL ICON LINKS (use slugs/handles; leave empty to hide)
 external-links:
-  linkedin: yasin-mohamed-1877b421b   # slug only
-  github: yasinmohamed1109            # your GitHub username
+  linkedin: yasin-mohamed-1877b421b
+  github: yasinmohamed1109
   stackoverflow: ""
   medium: ""
   x-twitter: ""
@@ -32,56 +30,37 @@ external-links:
   discord: ""
   bluesky: ""
 
-# ---------- Skills ----------
+# SKILLS (edit freely)
 skills:
   - category: 3D Modeling
     tools:
-      - Solidworks
+      - SolidWorks
       - Onshape
       - Creo
-      - Fusion 360 (Autodesk)
-      - Blender
+      - Fusion 360
       - Siemens NX
-      - Inventor (Autodesk)
-      - CATIA (Dassault Systèmes)
-
   - category: Prototyping
     tools:
+      - FDM
       - SLA
       - CNC
-      - FDM
-      - SLS
-      - DMLS
-      - PolyJet Printing
-      - Vacuum Casting
       - Laser Cutting
-      - Water Jet Cutting
       - Arduino / Raspberry Pi
-      - Breadboarding
-
-  - category: Design Standards / Practices
+  - category: Analysis
+    tools:
+      - CFD (Ansys / XFLR5)
+      - FEA (Ansys)
+      - MATLAB / Python
+  - category: Standards
     tools:
       - GD&T (ASME Y14)
-      - ISO fits and tolerances
-      - PLM (PTC Windchill / Arena)
+      - ISO fits & tolerances
 
-  - category: PCB Design
-    tools:
-      - Altium Designer
-      - Eagle
-      - KiCad
+# CONTACT (Formspree)
+formspree_key: ""   # EITHER: just the id like "abcd1234"
+formspree_url: ""   # OR: full URL like "https://formspree.io/f/abcd1234"
 
-  - category: Problem Solving / Risk Management
-    tools:
-      - Root Cause Analysis
-      - DFMEA / PFMEA
-      - Six Sigma
-      - Shain Red-X
-
-# ---------- Contact Form ----------
-formspree-key: "https://formspree.io/f/your-form-id"   # replace with your actual Formspree link
-
-# ---------- Theme Colors ----------
+# THEME COLORS
 colors:
   text: "#1a1c20"
   border: "#ddd"
@@ -90,7 +69,7 @@ colors:
   background: "#ffffff"
   light_background: "#f3f5fb"
 
-# ---------- Build Settings ----------
+# COLLECTIONS
 collections:
   projects:
     output: true
