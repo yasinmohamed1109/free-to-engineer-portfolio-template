@@ -1,20 +1,107 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: wrapper
+layout: default
+title: Home
 ---
 
-{% include hero.html%}
+<section id="home" class="hero">
+  <div class="hero__text">
+    <h1>I'm {{ site.name }}</h1>
+    <h2 class="headline">{{ site.headline }}</h2>
+    <p class="desc">{{ site.description }}</p>
 
+    <div class="cta">
+      {% if site.resume-url %}
+      <a class="button" href="{{ site.resume-url }}" target="_blank" rel="noopener">Resume</a>
+      {% endif %}
+      <a class="button button--ghost" href="#projects">Projects</a>
+    </div>
 
+    <div class="socials">
+      {% assign links = site.external-links %}
+      {% if links.linkedin and links.linkedin != "" %}
+        <a href="https://www.linkedin.com/in/{{ links.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+      {% endif %}
+      {% if links.github and links.github != "" %}
+        <a href="https://github.com/{{ links.github }}" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+      {% endif %}
+      {% if links.stackoverflow and links.stackoverflow != "" %}
+        <a href="https://stackoverflow.com/users/{{ links.stackoverflow }}" target="_blank" rel="noopener" aria-label="StackOverflow">so</a>
+      {% endif %}
+    </div>
+  </div>
 
-<div class="arrow"> 
-    <a href="#projects">
-        More About Me
-    <i class="fa-solid fa-angles-down"></i>
-    </a> 
-</div>
-{% include projects.html%}
-{% include skills.html%}
-{% include contact.html%}
+  <div class="hero__image">
+    <img src="{{ site.profile_image }}" alt="Headshot of {{ site.name }}">
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="grid">
+    {% for project in site.projects %}
+      <article class="card">
+        {% assign img = project.main-image | default: '' %}
+        {% if img %}
+          <img class="card__img" src="{{ img | relative_url }}" alt="{{ project.title }} image">
+        {% endif %}
+        <div class="card__body">
+          <h3>{{ project.title }}</h3>
+          {% if project.description %}
+            <p class="muted">{{ project.description }}</p>
+          {% endif %}
+          {% if project.skills and project.skills.size > 0 %}
+            <ul class="tags">
+              {% for s in project.skills limit:6 %}
+                <li>{{ s }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          <a class="card__link" href="{{ project.url | relative_url }}">Read more →</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2>Skills</h2>
+  <div class="skills">
+    {% for cat in site.skills %}
+      <div class="skillcat">
+        <h3>{{ cat.category }}</h3>
+        <ul>
+          {% for tool in cat.tools %}
+            <li>{{ tool }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  {% assign form_action = site.formspree_url %}
+  {% if form_action == "" and site.formspree_key != "" %}
+    {% assign form_action = "https://formspree.io/f/" | append: site.formspree_key %}
+  {% endif %}
+  {% if form_action != "" %}
+  <form class="contact" action="{{ form_action }}" method="POST">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" required>
+    </label>
+    <label>
+      <span>Email</span>
+      <input type="email" name="_replyto" required>
+    </label>
+    <label>
+      <span>Message</span>
+      <textarea name="message" rows="5" required></textarea>
+    </label>
+    <button class="button" type="submit">Send Message</button>
+  </form>
+  {% else %}
+    <p class="muted">Add a Formspree key in <code>_config.yml</code> to enable the form.</p>
+  {% endif %}
+</section>
