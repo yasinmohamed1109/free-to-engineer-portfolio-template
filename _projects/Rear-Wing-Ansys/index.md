@@ -8,7 +8,7 @@ skills:
   - Composite layup & fabrication
   - CAD (SolidWorks)
   - Test & data analysis
-main-image: ./hero.jpg
+main-image: ./rearwing.jpg
 ---
 
 ## Project Overview
@@ -27,7 +27,7 @@ Goal: produce ~30 lb downforce at 30 mph with practical manufacturability and mo
 ## Images
 Place more images in this folder and reference them:
 
-![Pressure field](./hero.jpg)
+![Pressure field](./rearwing.jpg)
 
 ## Notes
 - Future: endplate vortex control, multi-element flap adjuster, wind-tunnel calibration.
